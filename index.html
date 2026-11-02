@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <meta
+      name="description"
+      content="A friendly first check for suspicious internships, job offers, scholarship messages, and links."
+    />
+    <title>Scam Shield Student — Pause. Check. Protect.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand brand-home" href="#welcome" aria-label="Scam Shield Student welcome screen">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M16 3.5 26 7v7.4c0 6.4-4.1 11.7-10 14.1-5.9-2.4-10-7.7-10-14.1V7l10-3.5Z" fill="currentColor" />
+            <path d="m11.5 15.7 3 3 6-6.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span>scam shield<span class="brand-student"> student</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" data-screen="dashboard">Dashboard</a>
+        <a href="#checker" data-screen="check">Check message</a>
+        <a href="#learn" data-screen="learn">Learn about scams</a>
+        <details class="nav-more">
+          <summary>More <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-menu">
+            <a href="#scan-view" data-screen="scan">Scan an image</a>
+            <a href="#quiz-view" data-screen="quiz">Quick quiz</a>
+            <a href="#tips-view" data-screen="tips">Safety tips</a>
+            <a href="#report-view" data-screen="report">Report a scam</a>
+            <a href="#profile-view" data-screen="profile">My profile</a>
+          </div>
+        </details>
+      </nav>
+      <button class="header-cta profile-trigger" data-screen="profile" type="button">My profile <span aria-hidden="true">↗</span></button>
+    </header>
+
+    <main>
+      <section class="welcome-screen" id="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-content">
+          <div class="welcome-logo" aria-hidden="true">
+            <svg viewBox="0 0 64 72" fill="none">
+              <path d="M32 3 58 12v19c0 17-10.6 31-26 38C16.6 62 6 48 6 31V12L32 3Z" fill="#D6F0DF" />
+              <path d="M32 10 51 17v14c0 12.5-7.5 22.8-19 28-11.5-5.2-19-15.5-19-28V17l19-7Z" fill="#56AD7B" />
+              <path d="m23 32 6 6 13-14" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="eyebrow welcome-eyebrow"><span class="eyebrow-dot"></span> WELCOME TO</div>
+          <h1 id="welcome-title">Scam Shield <span>Student</span></h1>
+          <p class="welcome-description">Learn to recognize online scams and make safer choices about internships, jobs, scholarships, and links.</p>
+          <button class="primary-button welcome-start" id="get-started" type="button">Get started <span aria-hidden="true">→</span></button>
+          <p class="welcome-login">Already have an account? <button class="login-trigger" type="button">Log in</button></p>
+        </div>
+      </section>
+
+      <div class="dashboard-view" id="dashboard-view" hidden>
+      <section class="dashboard-screen" id="home">
+        <div class="dashboard-heading">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR STUDENT SAFETY HUB</div>
+            <h1><span id="greeting-text">Welcome</span>, <span id="student-name">Student</span> <span aria-hidden="true">👋</span></h1>
+            <p>Build your scam-spotting skills and make your next opportunity a safer one.</p>
+          </div>
+          <button class="personalize-button" type="button" id="personalize-button">Personalize <span aria-hidden="true">✎</span></button>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="daily-tip" id="daily-tip">
+            <div class="daily-tip-top"><span class="daily-tip-icon" aria-hidden="true">✦</span><span>YOUR DAILY SCAM TIP</span><span class="daily-tip-date" id="tip-date"></span></div>
+            <h2 id="tip-title"></h2>
+            <p id="tip-copy"></p>
+            <a href="#learn" data-screen="learn">Explore more scam tips <span aria-hidden="true">→</span></a>
+          </article>
+          <section class="quick-actions" aria-labelledby="quick-actions-title">
+            <div class="quick-actions-heading">
+              <div><div class="eyebrow">READY WHEN YOU ARE</div><h2 id="quick-actions-title">Quick actions</h2></div>
+            </div>
+            <div class="action-grid">
+              <a class="action-card action-check" href="#checker" data-screen="check">
+                <span class="action-icon" aria-hidden="true">⌕</span>
+                <span><strong>Check a message</strong><small>Spot common red flags</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="action-card" href="#scan-view" data-screen="scan">
+                <span class="action-icon image-icon" aria-hidden="true">▧</span>
+                <span><strong>Scan an image</strong><small>Check a screenshot or flyer</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="action-card" href="#quiz-view" data-screen="quiz">
+                <span class="action-icon quiz-icon" aria-hidden="true">✓</span>
+                <span><strong>Take a quiz</strong><small>Test what you know</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="action-card" href="#tips-view" data-screen="tips">
+                <span class="action-icon tips-icon" aria-hidden="true">✦</span>
+                <span><strong>Safety tips</strong><small>Build safer habits</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="action-card" href="#report-view" data-screen="report">
+                <span class="action-icon report-icon" aria-hidden="true">⚑</span>
+                <span><strong>Report a scam</strong><small>Record suspicious activity</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="action-card" href="#profile-view" data-screen="profile">
+                <span class="action-icon profile-icon" aria-hidden="true">☺</span>
+                <span><strong>Learning progress</strong><small>See your activity</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <div class="recent-preview">
+          <div><div class="eyebrow">STAY ONE STEP AHEAD</div><h2>Recent scam examples</h2></div>
+          <a href="#tips-view" data-screen="tips">See examples <span aria-hidden="true">→</span></a>
+          <div class="preview-tags"><span>Fake internship fees</span><span>Scholarship phishing</span><span>Recruiter impersonation</span></div>
+        </div>
+      </section>
+
+      <section class="bottom-cta">
+        <div class="bottom-shield" aria-hidden="true">✓</div>
+        <div>
+          <div class="eyebrow">YOU’VE GOT THIS</div>
+          <h2>Pause. Check. Then decide.</h2>
+          <p>Trust your instincts—and give yourself time to verify.</p>
+        </div>
+        <a class="primary-button" href="#checker" data-screen="check">Check a message <span aria-hidden="true">↑</span></a>
+      </section>
+      </div>
+
+      <section class="learn-view" id="learn" aria-labelledby="learn-title" hidden>
+        <div class="learn-view-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> LEARN ABOUT SCAMS</div>
+          <h1 id="learn-title">Know the scam. Spot the signs.</h1>
+          <p>Scammers use different approaches to trick people into sharing money, personal information, or account access. Learn what to look for and how to protect yourself.</p>
+        </div>
+        <div class="scam-category-grid">
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-work" aria-hidden="true">↗</span><span class="category-number">01</span></div>
+            <h2>Fake jobs & internships</h2>
+            <p>Fraudulent recruiters advertise attractive roles, then ask applicants for fees, financial details, or unpaid work.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Upfront fees, instant offers without interviews, or email addresses that don’t match the employer’s official domain.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Find the vacancy on the company’s official careers page and contact the employer using details you find independently.</span></div>
+          </article>
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-message" aria-hidden="true">✉</span><span class="category-number">02</span></div>
+            <h2>Phishing messages</h2>
+            <p>Emails, texts, or direct messages pretend to be from a trusted organization to steal passwords or personal details.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Unexpected sign-in links, requests for verification codes, urgent threats, or unfamiliar sender addresses.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Don’t use the message link. Open the organization’s official app or type its website address yourself.</span></div>
+          </article>
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-web" aria-hidden="true">◎</span><span class="category-number">03</span></div>
+            <h2>Fake websites</h2>
+            <p>Look-alike websites copy real brands or portals to collect login details, payments, or identity information.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Misspelled web addresses, unusual domain endings, broken pages, or payment requests on an unfamiliar site.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Check the web address carefully and use a trusted official link—not an ad or unexpected message.</span></div>
+          </article>
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-social" aria-hidden="true">#</span><span class="category-number">04</span></div>
+            <h2>Social media scams</h2>
+            <p>Fake profiles, impersonated accounts, and giveaway posts exploit trust built on social platforms.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Impersonator accounts, “share to claim” offers, requests to move to private chat, or asks for codes and money.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Verify accounts through the organization’s official site, report impersonators, and never share login codes.</span></div>
+          </article>
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-scholarship" aria-hidden="true">✦</span><span class="category-number">05</span></div>
+            <h2>Scholarship scams</h2>
+            <p>Fake scholarship offers promise guaranteed awards or claim you’ve been selected without a real application.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Processing fees, guaranteed awards, surprise “winner” messages, or requests for sensitive information.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Confirm the scholarship and its application process with the school or awarding organization directly.</span></div>
+          </article>
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-money" aria-hidden="true">$</span><span class="category-number">06</span></div>
+            <h2>Financial scams</h2>
+            <p>Fraudsters use fake investments, payment requests, or money-transfer schemes to take funds or misuse accounts.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Guaranteed returns, requests to forward money, gift-card payments, or pressure to share banking details.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Never move money for someone you don’t know. Ask a trusted adult or financial institution before sending money.</span></div>
+          </article>
+          <article class="scam-category-card">
+            <div class="category-card-top"><span class="category-icon category-shopping" aria-hidden="true">▣</span><span class="category-number">07</span></div>
+            <h2>Fake online shopping offers</h2>
+            <p>Fake stores and listings advertise popular products at implausibly low prices, then disappear after payment.</p>
+            <div class="category-warning"><strong>Watch for</strong><span>Prices far below market value, no independent reviews, copied product images, or payment outside the platform.</span></div>
+            <div class="category-safe"><strong>Stay safer</strong><span>Research the seller, check independent reviews, and use a payment method with buyer protection.</span></div>
+          </article>
+        </div>
+        <div class="learn-view-footer">
+          <p>Not sure about an offer? Pause, verify it through an official source, and ask someone you trust.</p>
+          <a class="primary-button" href="#checker" data-screen="check">Check a message <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="check-view" id="check-view" aria-labelledby="check-title" hidden>
+        <div class="check-view-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> CHECK A MESSAGE</div>
+          <h1 id="check-title">Not sure about that message?</h1>
+          <p>Check suspicious texts, emails, internship offers, or scholarship messages for common warning signs.</p>
+        </div>
+        <section class="checker-section" id="checker" aria-label="Message scam checker">
+          <div class="checker-card">
+            <div class="checker-form">
+              <label for="message-input">Paste the message, email, or offer here</label>
+              <div class="input-wrap">
+                <textarea
+                  id="message-input"
+                  rows="6"
+                  maxlength="3000"
+                  placeholder="Paste suspicious text, an email, a job offer, or a link here..."
+                ></textarea>
+                <div class="input-footer">
+                  <span id="char-count">0 / 3000</span>
+                  <span class="input-private"><span aria-hidden="true">🔒</span> Stays on your device</span>
+                </div>
+              </div>
+              <div class="form-actions check-actions">
+                <button class="primary-button analyze-button" id="analyze-button" type="button">
+                  <span aria-hidden="true">⌕</span> Check now
+                </button>
+                <button class="clear-button" id="clear-button" type="button">Clear</button>
+                <button class="text-button" id="example-button" type="button">Try an example</button>
+              </div>
+            </div>
+          </div>
+          <aside class="safety-reminder">
+            <span class="reminder-icon" aria-hidden="true">!</span>
+            <div><strong>Safety reminder</strong><p>Never share passwords, verification codes, or payment details with an unverified contact. This quick check is only a guide—not proof that a message is safe.</p></div>
+          </aside>
+        </section>
+      </section>
+
+      <section class="analysis-view" id="analysis-view" aria-labelledby="analysis-screen-title" hidden>
+        <div class="analysis-view-heading">
+          <a class="back-link" href="#checker" data-screen="check"><span aria-hidden="true">←</span> Back to message checker</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR MESSAGE CHECK</div>
+          <h1 id="analysis-screen-title">Analysis results</h1>
+          <p>Here are the common warning signs this quick check found in your message.</p>
+        </div>
+
+        <section class="analysis-result" id="analysis-result" aria-live="polite" aria-atomic="true">
+          <div class="risk-overview">
+            <div class="risk-overview-copy">
+              <span class="risk-overview-label">OVERALL RISK INDICATOR</span>
+              <span class="risk-badge" id="risk-badge">NOT CHECKED</span>
+              <h2 id="result-title">Check a message to see results</h2>
+              <p id="result-summary">This tool looks for common warning signs. It cannot confirm whether a sender or offer is genuine.</p>
+            </div>
+            <div class="risk-meter-wrap">
+              <div class="risk-meter" id="risk-meter" role="img" aria-label="Risk level not checked">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="risk-meter-labels"><span>Lower</span><span>Moderate</span><span>Higher</span></div>
+            </div>
+          </div>
+
+          <div class="analysis-columns">
+            <section class="findings-section" aria-labelledby="findings-title">
+              <div class="analysis-section-heading">
+                <div><span class="analysis-kicker">WHAT STOOD OUT</span><h2 id="findings-title">Warning signs detected</h2></div>
+                <span class="finding-count" id="finding-count"></span>
+              </div>
+              <div class="warning-findings" id="warning-findings"></div>
+            </section>
+            <aside class="next-steps-section" aria-labelledby="next-steps-title">
+              <span class="analysis-kicker">WHAT TO DO NEXT</span>
+              <h2 id="next-steps-title">Recommended next steps</h2>
+              <ul class="next-steps-list" id="next-steps-list"></ul>
+              <button class="report-button" id="report-scam-button" type="button"><span aria-hidden="true">⚑</span> Report this scam</button>
+            </aside>
+          </div>
+
+          <div class="analysis-bottom">
+            <p>This automated demo only checks for common text patterns. A low-risk result does not mean a message is safe.</p>
+            <div class="analysis-actions">
+              <button class="clear-button" id="check-another-button" type="button">Check another message</button>
+              <a class="primary-button" href="#home" data-screen="dashboard">Back to dashboard</a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="scan-view" id="scan-view" aria-labelledby="scan-title" hidden>
+        <div class="screen-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> IMAGE SCAM CHECKER</div>
+          <h1 id="scan-title">Check a screenshot or photo.</h1>
+          <p>Upload an image or take a photo. We’ll extract visible text in your browser and check it for common warning signs.</p>
+        </div>
+        <div class="scan-card">
+          <div class="scan-upload">
+            <div class="scan-upload-icon" aria-hidden="true">▧</div>
+            <h2>Add an image</h2>
+            <p>Choose a screenshot, email, job offer, or scholarship flyer.</p>
+            <div class="scan-upload-actions">
+              <label class="upload-button" for="image-upload">Upload image</label>
+              <label class="upload-button camera-upload-button" for="camera-upload">Take a photo</label>
+            </div>
+            <input id="image-upload" type="file" accept="image/*" hidden />
+            <input id="camera-upload" type="file" accept="image/*" capture="environment" hidden />
+            <div class="image-preview-wrap" id="image-preview-wrap" hidden>
+              <img id="image-preview" alt="Selected image preview" />
+              <span id="image-file-name"></span>
+            </div>
+            <button class="primary-button extract-button" id="extract-image-text" type="button" disabled>Extract text from image <span aria-hidden="true">→</span></button>
+            <p class="scan-status" id="scan-status" aria-live="polite">Images stay on your device. OCR downloads its language tools the first time and runs in this browser.</p>
+          </div>
+          <div class="scan-text">
+            <label for="image-message">Extracted text</label>
+            <textarea class="image-message" id="image-message" rows="10" maxlength="3000" placeholder="Extracted text will appear here. You can also type or paste text from the image."></textarea>
+            <div class="input-footer"><span id="image-char-count">0 / 3000</span><span class="input-private">Processed in this browser</span></div>
+            <button class="primary-button image-check-button" id="check-image-text" type="button">Analyze this text <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <p class="scan-safety-note"><strong>Safety reminder:</strong> Don’t open links or share passwords, verification codes, or payment details just because they appear in an image.</p>
+      </section>
+
+      <section class="quiz-view" id="quiz-view" aria-labelledby="quiz-screen-title" hidden>
+        <div class="screen-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> QUICK SCAM-AWARENESS QUIZ</div>
+          <h1 id="quiz-screen-title">Practice spotting the signs.</h1>
+          <p>Answer a few short questions to test your scam awareness. You’ll get an explanation after each answer.</p>
+        </div>
+        <div class="quiz-screen-card">
+          <div class="quiz-screen-icon" aria-hidden="true">✓</div>
+          <div class="quiz-progress" id="quiz-progress">QUESTION 1 OF 3</div>
+          <h2 id="quiz-question"></h2>
+          <div class="quiz-options" id="quiz-options"></div>
+          <p class="quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+          <div class="quiz-screen-footer">
+            <span id="quiz-score-note">Your progress is saved on this device.</span>
+            <button class="primary-button quiz-next" id="quiz-next" type="button" hidden>Next question <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tips-view" id="tips-view" aria-labelledby="tips-title" hidden>
+        <div class="screen-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> SCAM SAFETY TIPS</div>
+          <h1 id="tips-title">Small checks. Safer choices.</h1>
+          <p>Build everyday habits to help protect your money, identity, and online accounts.</p>
+        </div>
+        <article class="tips-daily-card">
+          <div class="daily-tip-icon" aria-hidden="true">✦</div>
+          <div><span class="analysis-kicker">TODAY’S SAFETY TIP</span><h2 id="tips-daily-title"></h2><p id="tips-daily-copy"></p></div>
+          <span class="daily-tip-date" id="tips-daily-date"></span>
+        </article>
+        <section class="tips-lessons-section" aria-labelledby="lesson-list-title">
+          <div class="tips-section-heading"><div class="eyebrow">SHORT EDUCATIONAL LESSONS</div><h2 id="lesson-list-title">Learn a safer habit</h2></div>
+          <div class="lesson-grid">
+            <article class="lesson-card" data-lesson="verify">
+              <span class="lesson-number">LESSON 01</span><h3>Verify before you trust</h3>
+              <p>Find an organization’s official website yourself. Check the sender’s full email address, not just their display name or logo.</p>
+              <button class="lesson-complete-button" type="button" data-lesson-button="verify">Mark lesson complete</button>
+            </article>
+            <article class="lesson-card" data-lesson="payment">
+              <span class="lesson-number">LESSON 02</span><h3>Pause before paying</h3>
+              <p>Unexpected fees for a job, scholarship, prize, or delivery deserve a second look. Never pay using gift cards or crypto because someone pressures you.</p>
+              <button class="lesson-complete-button" type="button" data-lesson-button="payment">Mark lesson complete</button>
+            </article>
+            <article class="lesson-card" data-lesson="accounts">
+              <span class="lesson-number">LESSON 03</span><h3>Protect your accounts</h3>
+              <p>Keep passwords and one-time codes private. Turn on multi-factor authentication and use a unique password for each account.</p>
+              <button class="lesson-complete-button" type="button" data-lesson-button="accounts">Mark lesson complete</button>
+            </article>
+          </div>
+        </section>
+        <section class="tips-two-column">
+          <div class="mistakes-card">
+            <div class="eyebrow">COMMON MISTAKES TO AVOID</div><h2>Pause before you…</h2>
+            <ul><li>Click a surprise link or download an unexpected file.</li><li>Rush because someone says an offer expires now.</li><li>Share a verification code, password, or personal document.</li><li>Pay an upfront fee to receive a job or scholarship.</li><li>Assume a logo or profile photo proves who sent a message.</li></ul>
+          </div>
+          <div class="prevention-card">
+            <div class="eyebrow">YOUR PREVENTION CHECKLIST</div><h2>Before you respond</h2>
+            <div class="prevention-checklist">
+              <label><input type="checkbox" data-checklist="sender" /> I checked who sent the message.</label>
+              <label><input type="checkbox" data-checklist="website" /> I verified the offer on an official website.</label>
+              <label><input type="checkbox" data-checklist="pressure" /> I took time to think without pressure.</label>
+              <label><input type="checkbox" data-checklist="details" /> I kept passwords and codes private.</label>
+              <label><input type="checkbox" data-checklist="advice" /> I asked someone I trust if I’m unsure.</label>
+            </div>
+            <p>Your checklist is saved only in this browser.</p>
+          </div>
+        </section>
+        <section class="tips-examples" aria-labelledby="tips-examples-title">
+          <div class="tips-section-heading"><div class="eyebrow">EXAMPLES OF SUSPICIOUS MESSAGES</div><h2 id="tips-examples-title">Recognize the red flags</h2><p>These are made-up examples for learning, not real reports.</p></div>
+          <div class="tips-example-grid">
+            <article><span>JOB OFFER</span><p>“You’re hired! Pay a refundable fee today to receive your work laptop.”</p><strong>Red flags: upfront fee and pressure</strong><button type="button" data-example="job">Check a similar message</button></article>
+            <article><span>SCHOLARSHIP TEXT</span><p>“You have won a scholarship. Sign in here and pay a processing charge to claim it.”</p><strong>Red flags: unexpected award, link, and payment</strong><button type="button" data-example="scholarship">Check a similar message</button></article>
+            <article><span>ACCOUNT ALERT</span><p>“Your account will close in 10 minutes. Reply with your login code to stop it.”</p><strong>Red flags: urgency and a verification code</strong><button type="button" data-example="phishing">Check a similar message</button></article>
+          </div>
+        </section>
+      </section>
+
+      <section class="report-view" id="report-view" aria-labelledby="report-title" hidden>
+        <div class="screen-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> REPORT SUSPICIOUS ACTIVITY</div>
+          <h1 id="report-title">Record a suspicious message.</h1>
+          <p>Save a private record on this device, then use the platform’s own reporting tools or your local official cybercrime authority to submit a report.</p>
+        </div>
+        <div class="report-layout">
+          <form class="report-form" id="report-form">
+            <label for="report-category">What kind of activity is it?</label>
+            <select id="report-category" required>
+              <option value="">Choose a category</option><option>Fake job or internship</option><option>Phishing message</option><option>Fake website</option><option>Social media scam</option><option>Scholarship scam</option><option>Financial scam</option><option>Fake shopping offer</option><option>Other suspicious activity</option>
+            </select>
+            <label for="report-channel">Where did you see it?</label>
+            <select id="report-channel" required>
+              <option value="">Choose a channel</option><option>Text message</option><option>Email</option><option>Social media</option><option>Website</option><option>Job or scholarship platform</option><option>Online marketplace</option><option>Other</option>
+            </select>
+            <label for="report-details">What happened? <span>(don’t include passwords, codes, or full payment details)</span></label>
+            <textarea id="report-details" rows="5" maxlength="1500" placeholder="Describe what made you suspicious. You can leave out personal details." required></textarea>
+            <label class="report-consent"><input id="report-consent" type="checkbox" required /> I understand this saves a record on this device only. It does not send a report to an authority or platform.</label>
+            <p class="report-form-error" id="report-form-error" role="alert"></p>
+            <button class="primary-button" type="submit">Save report on this device <span aria-hidden="true">→</span></button>
+            <p class="local-data-note">Your report record is stored in this browser. Avoid entering sensitive information.</p>
+          </form>
+          <aside class="report-guidance">
+            <div class="eyebrow">AFTER SAVING YOUR NOTE</div><h2>Make an official report</h2>
+            <p>Choose the service that received the message and use its built-in report or block controls. You can also find your local cybercrime or consumer-protection authority through an official government website.</p>
+            <ul><li>Keep the original message and sender details as evidence.</li><li>Don’t reply, click suspicious links, or forward money.</li><li>If you paid or shared financial details, contact your bank promptly.</li><li>If an account may be compromised, change its password from the official site.</li></ul>
+          </aside>
+        </div>
+        <section class="saved-reports-section" aria-labelledby="saved-reports-title">
+          <div class="tips-section-heading"><div class="eyebrow">PRIVATE TO THIS DEVICE</div><h2 id="saved-reports-title">Your saved report records</h2></div>
+          <div class="saved-reports-list" id="saved-reports-list"></div>
+        </section>
+      </section>
+
+      <section class="profile-view" id="profile-view" aria-labelledby="profile-title" hidden>
+        <div class="screen-heading">
+          <a class="back-link" href="#home" data-screen="dashboard"><span aria-hidden="true">←</span> Back to dashboard</a>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR LEARNING PROFILE</div>
+          <h1 id="profile-title">Your progress, your pace.</h1>
+          <p>Your learning activity is saved in this browser. No account is required for this prototype.</p>
+        </div>
+        <form class="profile-name-form" id="profile-name-form">
+          <label for="profile-name-input">What should we call you?</label>
+          <input id="profile-name-input" maxlength="30" placeholder="Student" />
+          <button class="primary-button" type="submit">Save name</button>
+          <p id="profile-save-status" aria-live="polite"></p>
+        </form>
+        <div class="profile-stats-grid">
+          <article class="profile-stat"><span class="profile-stat-icon" aria-hidden="true">⌕</span><span class="profile-stat-value" id="profile-check-count">0</span><span class="profile-stat-label">Messages checked</span></article>
+          <article class="profile-stat"><span class="profile-stat-icon quiz-icon" aria-hidden="true">✓</span><span class="profile-stat-value" id="profile-quiz-score">—</span><span class="profile-stat-label">Best quiz score</span></article>
+          <article class="profile-stat"><span class="profile-stat-icon tips-icon" aria-hidden="true">✦</span><span class="profile-stat-value" id="profile-lessons-count">0 / 3</span><span class="profile-stat-label">Lessons completed</span></article>
+          <article class="profile-stat"><span class="profile-stat-icon report-icon" aria-hidden="true">⚑</span><span class="profile-stat-value" id="profile-reports-count">0</span><span class="profile-stat-label">Reports recorded</span></article>
+        </div>
+        <section class="profile-progress-section">
+          <div class="tips-section-heading"><div class="eyebrow">YOUR LEARNING JOURNEY</div><h2>Keep building safer habits</h2></div>
+          <div class="progress-row"><div><strong>Quiz practice</strong><span id="profile-quiz-progress-text">No quiz completed yet</span></div><progress id="profile-quiz-progress" max="3" value="0"></progress></div>
+          <div class="progress-row"><div><strong>Safety lessons</strong><span id="profile-lessons-progress-text">0 of 3 lessons complete</span></div><progress id="profile-lessons-progress" max="3" value="0"></progress></div>
+          <div class="progress-row"><div><strong>Prevention checklist</strong><span id="profile-checklist-progress-text">0 of 5 checked</span></div><progress id="profile-checklist-progress" max="5" value="0"></progress></div>
+        </section>
+        <div class="profile-footnote">Progress and profile information are stored in local browser storage and can be cleared by clearing this browser’s site data.</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand brand-home" href="#welcome">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 26 7v7.4c0 6.4-4.1 11.7-10 14.1-5.9-2.4-10-7.7-10-14.1V7l10-3.5Z" fill="currentColor" /><path d="m11.5 15.7 3 3 6-6.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </span>
+        <span>scam shield<span class="brand-student"> student</span></span>
+      </a>
+      <p>Built to help students make safer, more informed choices.</p>
+      <span class="footer-note">Stay curious. Stay cautious. <span aria-hidden="true">♡</span></span>
+    </footer>
+    <dialog class="login-dialog" id="login-dialog" aria-labelledby="login-title">
+      <div class="login-dialog-content">
+        <div class="welcome-logo login-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 72" fill="none">
+            <path d="M32 3 58 12v19c0 17-10.6 31-26 38C16.6 62 6 48 6 31V12L32 3Z" fill="#D6F0DF" />
+            <path d="M32 10 51 17v14c0 12.5-7.5 22.8-19 28-11.5-5.2-19-15.5-19-28V17l19-7Z" fill="#56AD7B" />
+            <path d="m23 32 6 6 13-14" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h2 id="login-title">Welcome back</h2>
+        <p>Account login isn’t connected in this preview yet. You can still use the scam checker without an account.</p>
+        <button class="primary-button" id="continue-as-guest" type="button">Continue without an account</button>
+        <button class="login-close" type="button" id="close-login">Close</button>
+      </div>
+    </dialog>
+  </body>
+</html>
