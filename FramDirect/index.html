@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f4ec" />
+    <meta name="description" content="FarmDirect connects customers with independent farms for seasonal food, fair prices, and a shorter route from field to table." />
+    <title>FarmDirect — Fresh from farms. Direct to you.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#welcome" data-go="welcome" aria-label="FarmDirect home">
+        <span class="brand-icon" aria-hidden="true">✳</span>
+        <span class="brand-name">Farm<span>Direct</span><small>GOOD FOOD. FAIR ROOTS.</small></span>
+      </a>
+      <nav class="top-nav" id="top-nav" aria-label="Main navigation" hidden>
+        <button type="button" data-go="explore" data-nav="customer">Explore</button>
+        <button type="button" data-go="orders" data-nav="customer">My orders</button>
+        <button type="button" data-go="farmer-dashboard" data-nav="farmer">Overview</button>
+        <button type="button" data-go="manage-products" data-nav="farmer">My products</button>
+        <button type="button" data-go="manage-orders" data-nav="farmer">Incoming orders</button>
+        <button type="button" data-go="admin-dashboard" data-nav="admin">Admin</button>
+      </nav>
+      <div class="header-actions">
+        <span class="signed-in" id="signed-in" hidden></span>
+        <button class="header-basket" id="header-basket" type="button" data-go="cart" hidden>
+          <span aria-hidden="true">⌑</span> Basket <span class="basket-count" id="basket-count">0</span>
+        </button>
+        <button class="header-link" id="account-action" type="button" data-go="auth">Sign in</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen welcome-screen" id="screen-welcome" data-screen="welcome">
+        <div class="welcome-layout">
+          <div class="welcome-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> A better way to buy local</div>
+            <h1>Fresh from farms.<br /><em>Direct to you.</em></h1>
+            <p>Meet the people who grow your food. Shop this week’s harvest, know where it comes from, and make sure more goes back to the farm.</p>
+            <div class="welcome-actions">
+              <button class="button button-primary" type="button" data-enter="customer">Shop as a customer <span>→</span></button>
+              <button class="button button-outline" type="button" data-enter="farmer">I’m a farmer <span>→</span></button>
+            </div>
+            <div class="welcome-proof"><span class="proof-mark">✳</span><span><strong>Good food, closer to home.</strong><small>Independent farms. Fairer trade. Fresher picks.</small></span></div>
+          </div>
+          <div class="welcome-visual">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=88" alt="Golden morning light over green fields on a working farm" />
+            <div class="visual-caption"><span class="caption-dot"></span> Grown nearby. Shared directly.</div>
+            <div class="visual-note"><span>✳</span><strong>A shorter path<br />from field to table</strong></div>
+          </div>
+        </div>
+        <div class="welcome-values">
+          <div><span>01</span><strong>Meet local growers</strong><small>Know who grows your food.</small></div>
+          <div><span>02</span><strong>Shop what’s in season</strong><small>Fresh picks from nearby farms.</small></div>
+          <div><span>03</span><strong>Make every order count</strong><small>More value reaches the farmer.</small></div>
+        </div>
+      </section>
+
+      <section class="screen auth-screen" id="screen-auth" data-screen="auth" hidden>
+        <div class="auth-layout">
+          <aside class="auth-aside">
+            <span class="aside-spark">✳</span>
+            <div class="eyebrow">WELCOME TO FARMDirect</div>
+            <h1>Good food starts with <em>good people.</em></h1>
+            <p>One account brings your farm community a little closer.</p>
+            <div class="auth-aside-note"><span>✦</span> Farmers set their prices. You get to know the source.</div>
+          </aside>
+          <div class="auth-card">
+            <div class="auth-heading">
+              <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR FARMDirect ACCOUNT</span>
+              <h2 id="auth-title">Create your account</h2>
+              <p>Join as a customer or a farmer.</p>
+            </div>
+            <div class="auth-tabs" role="tablist" aria-label="Account access">
+              <button class="auth-tab is-active" id="register-tab" type="button" role="tab" aria-selected="true">Create account</button>
+              <button class="auth-tab" id="login-tab" type="button" role="tab" aria-selected="false">Sign in</button>
+            </div>
+            <form id="auth-form">
+              <label class="form-label" for="auth-name" id="name-label">Your name</label>
+              <input class="form-control" id="auth-name" name="name" autocomplete="name" placeholder="e.g. Alex Green" required />
+              <label class="form-label" for="auth-email">Email address</label>
+              <input class="form-control" id="auth-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+              <label class="form-label" for="auth-role">I’m joining as a</label>
+              <select class="form-control" id="auth-role" name="role">
+                <option value="customer">Customer</option>
+                <option value="farmer">Farmer</option>
+                <option value="admin">Administrator (demo)</option>
+              </select>
+              <label class="form-label" for="auth-farm" id="farm-label" hidden>Farm name</label>
+              <input class="form-control" id="auth-farm" name="farm" placeholder="e.g. Meadow & Moss Farm" hidden />
+              <label class="form-label" for="auth-password">Password</label>
+              <input class="form-control" id="auth-password" name="password" type="password" autocomplete="current-password" minlength="4" placeholder="At least 4 characters" required />
+              <p class="form-error" id="auth-error" role="alert" hidden></p>
+              <button class="button button-primary auth-submit" id="auth-submit" type="submit">Create account <span>→</span></button>
+            </form>
+            <div class="demo-access"><span>Or explore a demo workspace</span><div><button type="button" data-demo="customer">Customer</button><button type="button" data-demo="farmer">Farmer</button><button type="button" data-demo="admin">Admin</button></div></div>
+            <p class="demo-note">Demo experience: your profile and orders are stored only in this browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen explore-screen" id="screen-explore" data-screen="explore" hidden>
+        <div class="page-heading explore-heading">
+          <div><div class="eyebrow"><span class="eyebrow-dot"></span> THIS WEEK’S HARVEST</div><h1>Explore <em>farm-fresh.</em></h1><p>Seasonal food, listed by the people who grow it.</p></div>
+          <label class="search-control"><span aria-hidden="true">⌕</span><span class="visually-hidden">Search products and farms</span><input id="product-search" type="search" placeholder="Search products or farms" /><kbd>/</kbd></label>
+        </div>
+        <div class="explore-toolbar">
+          <div class="filter-group" role="group" aria-label="Filter products by category">
+            <button type="button" class="filter-button is-active" data-category="All" aria-pressed="true">All products</button>
+            <button type="button" class="filter-button" data-category="Vegetables" aria-pressed="false">Vegetables</button>
+            <button type="button" class="filter-button" data-category="Fruit" aria-pressed="false">Fruit</button>
+            <button type="button" class="filter-button" data-category="Pantry" aria-pressed="false">Pantry</button>
+          </div>
+          <span class="muted-copy" id="product-result-count" aria-live="polite"></span>
+        </div>
+        <div class="catalog-grid" id="product-grid"></div>
+        <div class="empty-state" id="empty-products" hidden><span>✳</span><h2>No harvest found</h2><p>Try a different search or product category.</p></div>
+      </section>
+
+      <section class="screen details-screen" id="screen-details" data-screen="details" hidden>
+        <button class="back-button" type="button" data-go="explore">← Back to the harvest</button>
+        <div class="detail-layout" id="product-detail"></div>
+      </section>
+
+      <section class="screen cart-screen" id="screen-cart" data-screen="cart" hidden>
+        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR LOCAL HARVEST</div><h1>Your <em>basket.</em></h1><p>Every item comes straight from a farm in your community.</p></div>
+        <div class="cart-layout">
+          <div class="cart-lines" id="cart-lines"></div>
+          <aside class="order-summary" id="order-summary"></aside>
+        </div>
+      </section>
+
+      <section class="screen orders-screen" id="screen-orders" data-screen="orders" hidden>
+        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR FARMDirect ACCOUNT</div><h1>My <em>orders.</em></h1><p>See what’s on its way from your local farms.</p></div>
+        <div class="order-history" id="order-history"></div>
+      </section>
+
+      <section class="screen workspace-screen" id="screen-farmer-dashboard" data-screen="farmer-dashboard" hidden>
+        <aside class="workspace-sidebar">
+          <div class="workspace-user"><span class="workspace-avatar" id="farmer-avatar">F</span><span><strong id="farmer-sidebar-name">Farm account</strong><small>FARMER WORKSPACE</small></span></div>
+          <span class="sidebar-label">YOUR FARM</span>
+          <button class="workspace-link is-active" type="button" data-go="farmer-dashboard"><span>⌂</span> Overview</button>
+          <button class="workspace-link" type="button" data-go="manage-products"><span>▦</span> Manage products</button>
+          <button class="workspace-link" type="button" data-go="add-product"><span>＋</span> Add a product</button>
+          <button class="workspace-link" type="button" data-go="manage-orders"><span>⌑</span> Manage orders</button>
+          <div class="sidebar-callout"><span>✳</span><strong>Your farm.<br />Your customers.</strong><small>Good things grow better together.</small></div>
+        </aside>
+        <div class="workspace-content">
+          <div class="workspace-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> FARM OVERVIEW</div><h1>Good morning, <em id="farmer-greeting">farmer.</em></h1><p>Here’s what’s happening with your farm today.</p></div><button class="button button-primary" type="button" data-go="add-product">＋ Add a product</button></div>
+          <div class="metric-grid" id="farmer-metrics"></div>
+          <div class="dashboard-panels"><section class="panel"><div class="panel-heading"><div><span class="eyebrow">YOUR LISTINGS</span><h2>Recent products</h2></div><button class="inline-action" type="button" data-go="manage-products">Manage all →</button></div><div id="farmer-recent-products"></div></section><section class="panel"><div class="panel-heading"><div><span class="eyebrow">FULFILLMENT</span><h2>Latest orders</h2></div><button class="inline-action" type="button" data-go="manage-orders">View all →</button></div><div id="farmer-recent-orders"></div></section></div>
+        </div>
+      </section>
+
+      <section class="screen workspace-screen" id="screen-add-product" data-screen="add-product" hidden>
+        <aside class="workspace-sidebar">
+          <div class="workspace-user"><span class="workspace-avatar" id="farmer-avatar-add">F</span><span><strong class="farm-sidebar-label">Farm account</strong><small>FARMER WORKSPACE</small></span></div>
+          <span class="sidebar-label">YOUR FARM</span>
+          <button class="workspace-link" type="button" data-go="farmer-dashboard"><span>⌂</span> Overview</button>
+          <button class="workspace-link" type="button" data-go="manage-products"><span>▦</span> Manage products</button>
+          <button class="workspace-link is-active" type="button" data-go="add-product"><span>＋</span> Add a product</button>
+          <button class="workspace-link" type="button" data-go="manage-orders"><span>⌑</span> Manage orders</button>
+          <div class="sidebar-callout"><span>✳</span><strong>Fresh from<br />your farm.</strong><small>Share what’s in season.</small></div>
+        </aside>
+        <div class="workspace-content form-workspace">
+          <button class="back-button" type="button" data-go="manage-products">← Back to products</button>
+          <div class="workspace-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> FARM LISTING</div><h1>Add a new <em>product.</em></h1><p>Tell your neighbors what’s ready for their table.</p></div></div>
+          <form class="listing-form panel" id="product-form">
+            <div class="form-section-title"><span>01</span><div><h2>Product details</h2><p>Share the details customers need to make it theirs.</p></div></div>
+            <div class="form-grid">
+              <div class="form-field"><label for="new-product-name">Product name</label><input class="form-control" id="new-product-name" name="name" placeholder="e.g. Heirloom tomatoes" required maxlength="54" /></div>
+              <div class="form-field"><label for="new-product-category">Category</label><select class="form-control" id="new-product-category" name="category"><option>Vegetables</option><option>Fruit</option><option>Pantry</option></select></div>
+              <div class="form-field"><label for="new-product-price">Price (USD)</label><input class="form-control" id="new-product-price" name="price" type="number" placeholder="4.50" min="0.01" max="9999" step="0.01" required /></div>
+              <div class="form-field"><label for="new-product-unit">Price per</label><select class="form-control" id="new-product-unit" name="unit"><option value="lb">Pound (lb)</option><option value="bunch">Bunch</option><option value="pint">Pint</option><option value="bag">Bag</option><option value="jar">Jar</option><option value="each">Each</option></select></div>
+              <div class="form-field form-field-wide"><label for="new-product-description">A little about it</label><textarea class="form-control" id="new-product-description" name="description" placeholder="How is it grown? What makes this harvest special?" rows="4" maxlength="160" required></textarea></div>
+              <div class="form-field"><label for="new-product-tag">Harvest note</label><input class="form-control" id="new-product-tag" name="tag" placeholder="e.g. Just picked" maxlength="24" /></div>
+              <div class="form-field"><label for="new-product-image">Image URL <span class="optional-label">optional</span></label><input class="form-control" id="new-product-image" name="image" type="url" placeholder="https://example.com/harvest.jpg" /></div>
+            </div>
+            <div class="form-actions"><button class="button button-outline" type="button" data-go="manage-products">Cancel</button><button class="button button-primary" type="submit">Publish product <span>→</span></button></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="screen workspace-screen" id="screen-manage-products" data-screen="manage-products" hidden>
+        <aside class="workspace-sidebar">
+          <div class="workspace-user"><span class="workspace-avatar" id="farmer-avatar-products">F</span><span><strong class="farm-sidebar-label">Farm account</strong><small>FARMER WORKSPACE</small></span></div>
+          <span class="sidebar-label">YOUR FARM</span>
+          <button class="workspace-link" type="button" data-go="farmer-dashboard"><span>⌂</span> Overview</button>
+          <button class="workspace-link is-active" type="button" data-go="manage-products"><span>▦</span> Manage products</button>
+          <button class="workspace-link" type="button" data-go="add-product"><span>＋</span> Add a product</button>
+          <button class="workspace-link" type="button" data-go="manage-orders"><span>⌑</span> Manage orders</button>
+          <div class="sidebar-callout"><span>✳</span><strong>In season<br />and ready.</strong><small>Your listings reach customers directly.</small></div>
+        </aside>
+        <div class="workspace-content">
+          <div class="workspace-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR FARM STALL</div><h1>Manage <em>products.</em></h1><p>Keep your listings up to date as the harvest changes.</p></div><button class="button button-primary" type="button" data-go="add-product">＋ Add a product</button></div>
+          <div class="table-panel panel"><div class="table-toolbar"><strong id="manage-product-count"></strong><span>Update availability or remove a listing.</span></div><div class="table-scroll"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>PRICE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="manage-product-rows"></tbody></table></div><div class="table-empty" id="manage-products-empty" hidden>No products listed yet. Add your first harvest.</div></div>
+        </div>
+      </section>
+
+      <section class="screen workspace-screen" id="screen-manage-orders" data-screen="manage-orders" hidden>
+        <aside class="workspace-sidebar">
+          <div class="workspace-user"><span class="workspace-avatar" id="farmer-avatar-orders">F</span><span><strong class="farm-sidebar-label">Farm account</strong><small>FARMER WORKSPACE</small></span></div>
+          <span class="sidebar-label">YOUR FARM</span>
+          <button class="workspace-link" type="button" data-go="farmer-dashboard"><span>⌂</span> Overview</button>
+          <button class="workspace-link" type="button" data-go="manage-products"><span>▦</span> Manage products</button>
+          <button class="workspace-link" type="button" data-go="add-product"><span>＋</span> Add a product</button>
+          <button class="workspace-link is-active" type="button" data-go="manage-orders"><span>⌑</span> Manage orders</button>
+          <div class="sidebar-callout"><span>✳</span><strong>Thanks for<br />growing local.</strong><small>Every order connects you to a neighbor.</small></div>
+        </aside>
+        <div class="workspace-content">
+          <div class="workspace-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> CUSTOMER ORDERS</div><h1>Manage <em>orders.</em></h1><p>See what customers have ordered from your farm.</p></div><span class="date-pill" id="farmer-order-date"></span></div>
+          <div class="table-panel panel"><div class="table-toolbar"><strong id="manage-order-count"></strong><span>Move an order forward when it’s ready.</span></div><div class="table-scroll"><table><thead><tr><th>ORDER</th><th>CUSTOMER</th><th>ITEMS</th><th>TOTAL</th><th>STATUS</th><th>UPDATE</th></tr></thead><tbody id="manage-order-rows"></tbody></table></div><div class="table-empty" id="manage-orders-empty" hidden>New customer orders will show up here.</div></div>
+        </div>
+      </section>
+
+      <section class="screen admin-screen" id="screen-admin-dashboard" data-screen="admin-dashboard" hidden>
+        <aside class="workspace-sidebar admin-sidebar">
+          <div class="workspace-user"><span class="workspace-avatar admin-avatar">A</span><span><strong>FarmDirect</strong><small>ADMIN CONSOLE</small></span></div>
+          <span class="sidebar-label">PLATFORM</span>
+          <button class="workspace-link is-active" type="button" data-go="admin-dashboard"><span>▥</span> Dashboard</button>
+          <button class="workspace-link" type="button" data-admin-tab="orders"><span>⌑</span> All orders</button>
+          <button class="workspace-link" type="button" data-admin-tab="farmers"><span>♧</span> Farm partners</button>
+          <button class="workspace-link" type="button" data-admin-tab="products"><span>▦</span> All products</button>
+          <div class="sidebar-callout"><span>✳</span><strong>A healthier<br />food system.</strong><small>Built on trust and direct connections.</small></div>
+        </aside>
+        <div class="workspace-content">
+          <div class="workspace-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> PLATFORM OVERVIEW</div><h1>Good things are <em>growing.</em></h1><p>A view of the FarmDirect community and marketplace.</p></div><span class="date-pill">ADMINISTRATOR</span></div>
+          <div class="metric-grid" id="admin-metrics"></div>
+          <section class="panel admin-table-panel"><div class="panel-heading"><div><span class="eyebrow">MARKETPLACE ACTIVITY</span><h2 id="admin-table-title">Recent orders</h2></div><div class="admin-tab-buttons" role="group" aria-label="Choose platform data"><button class="admin-tab is-active" type="button" data-admin-tab="orders">Orders</button><button class="admin-tab" type="button" data-admin-tab="farmers">Farm partners</button><button class="admin-tab" type="button" data-admin-tab="products">Products</button></div></div><div class="table-scroll"><table id="admin-table"><thead id="admin-table-head"></thead><tbody id="admin-table-rows"></tbody></table></div><div class="table-empty" id="admin-table-empty" hidden>No marketplace activity yet.</div></section>
+          <p class="admin-demo-note">Admin dashboard uses demo data stored in this browser.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span class="footer-brand">✳ FarmDirect</span><span>Fresher food. Fairer roots.</span><span>FarmDirect demo · <span id="current-year"></span></span></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
